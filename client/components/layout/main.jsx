@@ -5,7 +5,7 @@ import { Footer, Header } from "../common";
 export default function Main({ children }) {
 	return (
 		<Stack minHeight="100vh">
-			{/* <Stack
+			<Stack
 				direction="column"
 				position="absolute"
 				top={0}
@@ -13,7 +13,7 @@ export default function Main({ children }) {
 				right={0}
 			>
 				<Header />
-			</Stack> */}
+			</Stack>
 
 			<Box component="main" flexGrow={1}>
 				{children}
