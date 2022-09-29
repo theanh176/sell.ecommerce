@@ -1,0 +1,38 @@
+import CallIcon from "@mui/icons-material/Call";
+import { Box, Stack, Divider, Typography, Button } from "@mui/material";
+
+export default function HeaderContact() {
+	return (
+		<Stack
+			direction="rơw"
+			justifyContent="space-between"
+			p={2}
+			backgroundColor="white"
+			zIndex={100}
+		>
+			<Box display="flex">
+				<CallIcon sx={{ marginRight: "8px" }} />
+				<Typography>020-800-456-747</Typography>
+				<Divider
+					sx={{
+						margin: "0 8px",
+						width: "1px",
+						backgroundColor: "gray",
+					}}
+				/>
+				<Typography>Free shipping on orders over $300</Typography>
+			</Box>
+			{/* <Box display="flex" alignItems="start">
+				<Button>
+					<img
+						src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
+						alt="English"
+						height="20px"
+						width="20px"
+					></img>
+					<Typography mx={0.5}>English</Typography>
+				</Button>
+			</Box> */}
+		</Stack>
+	);
+}
