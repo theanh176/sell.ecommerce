@@ -1,5 +1,5 @@
 import CallIcon from "@mui/icons-material/Call";
-import { Box, Stack, Divider, Typography, Button } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 
 export default function HeaderContact() {
 	return (
@@ -22,17 +22,6 @@ export default function HeaderContact() {
 				/>
 				<Typography>Free shipping on orders over $300</Typography>
 			</Box>
-			{/* <Box display="flex" alignItems="start">
-				<Button>
-					<img
-						src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
-						alt="English"
-						height="20px"
-						width="20px"
-					></img>
-					<Typography mx={0.5}>English</Typography>
-				</Button>
-			</Box> */}
 		</Stack>
 	);
 }

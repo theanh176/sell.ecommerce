@@ -88,9 +88,6 @@ export default function Navbar(props) {
 						boxShadow: "none",
 						flexDirection: "row",
 						justifyContent: "space-between",
-						// "&:hover": {
-						// 	position: "fixed",
-						// },
 					}}
 				>
 					<Typography
