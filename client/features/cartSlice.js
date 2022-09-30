@@ -33,6 +33,7 @@ const cartSlice = createSlice({
 					position: "bottom-left",
 				});
 			}
+			setCookies("cart", JSON.stringify(state.cartItems));
 		},
 	},
 });
