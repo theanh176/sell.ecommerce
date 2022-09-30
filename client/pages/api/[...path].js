@@ -1,5 +1,4 @@
 import httpProxy from "http-proxy";
-import Cookies from "cookies";
 
 export const config = {
 	api: {
