@@ -4,8 +4,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cartSlice";
 
-export default function ProductItemPhone() {
+export default function ProductItemPhone(props) {
+	const dispatch = useDispatch();
+	const handleAddToCart = (product) => {
+		dispatch(addToCart(product));
+	};
+	const {
+		item: { name, image, price, id },
+	} = props;
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			<CardActionArea>
@@ -18,10 +27,10 @@ export default function ProductItemPhone() {
 				/>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
-						Iphone 14
+						{name}
 					</Typography>
 					<Typography variant="body2" color="text.secondary">
-						1100$
+						{price}$
 					</Typography>
 				</CardContent>
 			</CardActionArea>
@@ -37,6 +46,7 @@ export default function ProductItemPhone() {
 							border: "1px solid gray",
 						},
 					}}
+					onClick={() => handleAddToCart(props.item)}
 				>
 					Add To Cart
 				</Button>

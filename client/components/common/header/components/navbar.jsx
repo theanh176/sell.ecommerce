@@ -140,7 +140,7 @@ export default function Navbar(props) {
 							<HiOutlineUserCircle size={24} />
 						</IconButton>
 						<IconButton>
-							<Badge badgeContent={4} color="primary">
+							<Badge badgeContent={3} color="primary">
 								<BsCart2 size={24} />
 							</Badge>
 						</IconButton>
