@@ -4,13 +4,13 @@ import React from "react";
 import Slider from "react-slick";
 // import styled from "styled-components";
 const settings = {
-	dots: true,
+	dots: false,
 	infinite: true,
 	speed: 500,
 	slidesToShow: 1,
 	slidesToScroll: 1,
 	arrows: false,
-	autoplay: true,
+	autoplay: false,
 };
 const LISTBANNER = [
 	{
@@ -47,8 +47,8 @@ export default function SliderBanner() {
 						<Stack
 							direction="column"
 							justifyContent="center"
-							width={550}
-							height={500}
+							width={600}
+							height={420}
 							my="auto"
 						>
 							<img

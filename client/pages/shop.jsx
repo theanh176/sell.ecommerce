@@ -1,11 +1,13 @@
 import { Box } from "@mui/material";
 import React from "react";
+import CategoryShop from "../components/category-shop";
+import ActiveLastBreadcrumb from "../components/common/breadcrumbs";
 import { Seo } from "../components/common/seo";
 import LayoutDefault from "../components/layout/layout-default";
 
 export default function Shop() {
 	return (
-		<Box height={1000} color="black">
+		<Box color="black">
 			<Seo
 				data={{
 					title: "Sell Ecommerce | Next JS",
@@ -16,7 +18,7 @@ export default function Shop() {
 						"https://cdn.getshifter.co/caa65008efb706a8bfc6f7e4045d6a018420c3df/uploads/2020/11/nextjs.png",
 				}}
 			/>
-			Shop
+			<CategoryShop />
 		</Box>
 	);
 }

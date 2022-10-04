@@ -4,22 +4,16 @@ import { Footer, Header } from "../common";
 
 export default function Main({ children }) {
 	return (
-		<Stack minHeight="100vh">
-			<Stack
-				direction="column"
-				position="absolute"
-				top={0}
-				left={0}
-				right={0}
-			>
+		<Box minHeight="100vh">
+			<Box position="absolute" top={0} left={0} right={0} zIndex={1}>
 				<Header />
-			</Stack>
+			</Box>
 
 			<Box component="main" flexGrow={1}>
 				{children}
 			</Box>
 
 			<Footer />
-		</Stack>
+		</Box>
 	);
 }

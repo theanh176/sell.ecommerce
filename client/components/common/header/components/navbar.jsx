@@ -13,10 +13,11 @@ import AppBar from "@mui/material/AppBar";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const pages = [
 	{
@@ -69,12 +70,22 @@ ElevationScroll.propTypes = {
 export default function Navbar(props) {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
+
+	useEffect(() => {
+		return () => {
+			document.addEventListener("scroll", () => {
+				setAnchorEl(null);
+			});
+		};
+	}, [anchorEl]);
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
 	return (
 		<React.Fragment>
 			<ElevationScroll {...props}>
@@ -111,18 +122,24 @@ export default function Navbar(props) {
 							}}
 						>
 							{pages.map((item, index) => (
-								<Button
+								<Box
 									key={index}
 									sx={{
 										margin: "8px 16px",
 										padding: "8px 16px",
-										color: "white",
-										display: "block",
+										display: "inherit",
 										color: "black",
+										"&:hover": {
+											color: "gray",
+											bgcolor: "transparent",
+										},
 									}}
 								>
 									<Link href={item.path}>{item.name}</Link>
-								</Button>
+									<Box>
+										<KeyboardArrowDownIcon />
+									</Box>
+								</Box>
 							))}
 						</Box>
 					</Toolbar>
@@ -140,12 +157,15 @@ export default function Navbar(props) {
 							<HiOutlineUserCircle size={24} />
 						</IconButton>
 						<IconButton>
-							<Badge badgeContent={3} color="primary">
-								<BsCart2 size={24} />
-							</Badge>
+							<Link href="/cart">
+								<Badge badgeContent={3} color="primary">
+									<BsCart2 size={24} />
+								</Badge>
+							</Link>
 						</IconButton>
 					</Stack>
 					<Menu
+						disableScrollLock={true}
 						id="basic-menu"
 						anchorEl={anchorEl}
 						open={open}

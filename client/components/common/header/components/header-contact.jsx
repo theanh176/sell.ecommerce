@@ -3,8 +3,8 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 
 export default function HeaderContact() {
 	return (
-		<Stack
-			direction="rơw"
+		<Box
+			display="flex"
 			justifyContent="space-between"
 			p={2}
 			backgroundColor="white"
@@ -22,6 +22,6 @@ export default function HeaderContact() {
 				/>
 				<Typography>Free shipping on orders over $300</Typography>
 			</Box>
-		</Stack>
+		</Box>
 	);
 }

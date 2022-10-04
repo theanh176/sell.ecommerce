@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import ActiveLastBreadcrumb from "../components/common/breadcrumbs";
 import { Seo } from "../components/common/seo";
 import LayoutDefault from "../components/layout/layout-default";
 
@@ -16,7 +17,7 @@ export default function Blog() {
 						"https://cdn.getshifter.co/caa65008efb706a8bfc6f7e4045d6a018420c3df/uploads/2020/11/nextjs.png",
 				}}
 			/>
-			Blog
+			<ActiveLastBreadcrumb name={"blog"} path={"/blog"} />
 		</Box>
 	);
 }
