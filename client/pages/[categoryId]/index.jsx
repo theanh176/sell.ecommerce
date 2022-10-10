@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import React from "react";
-import BlogList from "../components/blog";
-import ActiveLastBreadcrumb from "../components/common/breadcrumbs";
-import { Seo } from "../components/common/seo";
-import LayoutDefault from "../components/layout/layout-default";
+import ActiveLastBreadcrumb from "../../components/common/breadcrumbs";
+import { Seo } from "../../components/common/seo";
+import SliderBanner from "../../components/common/slider";
+import LayoutDefault from "../../components/layout/layout-default";
 
-export default function Blog() {
+export default function CategoryShop() {
 	return (
 		<Box>
 			<Seo
@@ -18,10 +18,12 @@ export default function Blog() {
 						"https://cdn.getshifter.co/caa65008efb706a8bfc6f7e4045d6a018420c3df/uploads/2020/11/nextjs.png",
 				}}
 			/>
-			<Box height={64} bgcolor="#f8f9fa" marginTop={-8}></Box>
+			<Box bgcolor="#f8f9fa" marginTop={-10}>
+				<SliderBanner />
+			</Box>
+
 			<ActiveLastBreadcrumb name={"blog"} path={"/blog"} />
-			<BlogList />
 		</Box>
 	);
 }
-Blog.Layout = LayoutDefault;
+CategoryShop.Layout = LayoutDefault;

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useRouter } from "next/router";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -18,6 +19,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BasicRating from "../../common/rating";
 
 export default function ProductItemPhone(props) {
+	const router = useRouter();
 	const [acitve, setActive] = useState(false);
 	const dispatch = useDispatch();
 	const handleAddToCart = (product) => {
@@ -26,16 +28,31 @@ export default function ProductItemPhone(props) {
 	const {
 		item: { name, image, price, id },
 	} = props;
+
+	const pathName =
+		name
+			.replace(/[`~!@#$%^&*()_|\s+|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "-")
+			.toLowerCase()
+			.normalize("NFD")
+			.replace(/[\u0300-\u036f]/g, "")
+			.replace(/đ/g, "d")
+			.replace(/Đ/g, "D") +
+		"." +
+		id;
 	return (
 		<Fragment>
 			<Card
+				onClick={() => router.push(`/phone/${pathName}`)}
+				// onClick={() => console.log(pathName)}
 				sx={{
 					maxWidth: 300,
 					maxHeight: 475,
 					border: "1px solid #f3f3f3",
 					boxShadow: "none",
-					// boxShadow:
-					// 	"0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%)",
+					transition: "transform .2s",
+					"&:hover": {
+						transform: "scale(1.03)",
+					},
 				}}
 			>
 				<CardActionArea>
@@ -53,7 +70,8 @@ export default function ProductItemPhone(props) {
 							-40%
 						</Box>
 						<IconButton
-							onClick={() => {
+							onClick={(e) => {
+								e.stopPropagation();
 								setActive(!acitve);
 							}}
 						>
@@ -73,8 +91,10 @@ export default function ProductItemPhone(props) {
 					<CardMedia
 						sx={{
 							objectFit: "contain",
+							transition: "transform .2s",
 							"&:hover": {
-								objectFit: "cover",
+								// objectFit: "cover",
+								transform: "scale(1.3)",
 							},
 						}}
 						component="img"

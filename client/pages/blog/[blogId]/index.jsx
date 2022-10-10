@@ -1,11 +1,13 @@
 import { Box } from "@mui/material";
 import React from "react";
-import BlogList from "../components/blog";
-import ActiveLastBreadcrumb from "../components/common/breadcrumbs";
-import { Seo } from "../components/common/seo";
-import LayoutDefault from "../components/layout/layout-default";
+import BlogDetail from "../../../components/blog/blog-detail";
+import ActiveLastBreadcrumb from "../../../components/common/breadcrumbs";
+import { Seo } from "../../../components/common/seo";
+import LayoutDefault from "../../../components/layout/layout-default";
 
-export default function Blog() {
+const listName = ["Home", "Blog"];
+
+export default function ProductDetail() {
 	return (
 		<Box>
 			<Seo
@@ -19,9 +21,9 @@ export default function Blog() {
 				}}
 			/>
 			<Box height={64} bgcolor="#f8f9fa" marginTop={-8}></Box>
-			<ActiveLastBreadcrumb name={"blog"} path={"/blog"} />
-			<BlogList />
+			<ActiveLastBreadcrumb listName={listName} path={"/"} name={"Id"} />
+			<BlogDetail />
 		</Box>
 	);
 }
-Blog.Layout = LayoutDefault;
+ProductDetail.Layout = LayoutDefault;

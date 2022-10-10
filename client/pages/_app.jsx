@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
+import { SWRConfig } from "swr";
 import { createEmotionCache, theme } from "../utils/index";
 import "../styles/globals.css";
 
@@ -44,11 +45,18 @@ function MyApp(props) {
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<ToastContainer />
-				<Provider store={store}>
-					<Layout>
-						<Component {...pageProps} />
-					</Layout>
-				</Provider>
+				<SWRConfig
+					value={{
+						fetcher: (url) => axiosClient.put(url),
+						shouldRetryOnError: false,
+					}}
+				>
+					<Provider store={store}>
+						<Layout>
+							<Component {...pageProps} />
+						</Layout>
+					</Provider>
+				</SWRConfig>
 			</ThemeProvider>
 		</CacheProvider>
 	);

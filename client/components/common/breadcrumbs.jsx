@@ -9,6 +9,7 @@ function handleClick(event) {
 }
 
 export default function ActiveLastBreadcrumb(props) {
+	const ListName = props.listName;
 	return (
 		<Box
 			my={3}
@@ -18,9 +19,19 @@ export default function ActiveLastBreadcrumb(props) {
 			justifyContent="center"
 		>
 			<Breadcrumbs aria-label="breadcrumb">
-				<Typography sx={{ color: "black" }}>
-					<Link href="/">Home</Link>
-				</Typography>
+				{ListName && ListName.length > 0 ? (
+					ListName.map((item, index) => {
+						return (
+							<Typography sx={{ color: "black" }} key={index}>
+								<Link href="/">{item}</Link>
+							</Typography>
+						);
+					})
+				) : (
+					<Typography sx={{ color: "black" }}>
+						<Link href="/">Home</Link>
+					</Typography>
+				)}
 				<Link href={props.path}>{props.name}</Link>
 			</Breadcrumbs>
 		</Box>

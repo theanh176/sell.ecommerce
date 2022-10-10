@@ -18,6 +18,7 @@ import { BiSearch } from "react-icons/bi";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useRouter } from "next/router";
 
 const pages = [
 	{
@@ -68,6 +69,8 @@ ElevationScroll.propTypes = {
 };
 
 export default function Navbar(props) {
+	const router = useRouter();
+	const [isTab, setIsTab] = useState();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 
@@ -102,6 +105,7 @@ export default function Navbar(props) {
 					}}
 				>
 					<Typography
+						onClick={() => router.push(`/`)}
 						variant="h5"
 						sx={{
 							mr: 2,
@@ -111,6 +115,7 @@ export default function Navbar(props) {
 							letterSpacing: ".3rem",
 							color: "inherit",
 							textDecoration: "none",
+							cursor: "pointer",
 						}}
 					>
 						SELL
@@ -123,6 +128,21 @@ export default function Navbar(props) {
 						>
 							{pages.map((item, index) => (
 								<Box
+									id="basic-button"
+									aria-controls={
+										open ? "basic-menu1" : undefined
+									}
+									aria-haspopup="true"
+									aria-expanded={open ? "true" : undefined}
+									onMouseEnter={() => {
+										setIsTab(item.id);
+									}}
+									// onClick={(e) => {
+									// 	e.stopPropagation();
+									// 	e.preventDefault();
+									// 	console.log("a");
+									// 	// handleClick;
+									// }}
 									key={index}
 									sx={{
 										margin: "8px 16px",
@@ -137,7 +157,16 @@ export default function Navbar(props) {
 								>
 									<Link href={item.path}>{item.name}</Link>
 									<Box>
-										<KeyboardArrowDownIcon />
+										<KeyboardArrowDownIcon
+											sx={{
+												transition: " transform .2s",
+												transform: `${
+													isTab === item.id
+														? "rotate(180deg)"
+														: ""
+												}`,
+											}}
+										/>
 									</Box>
 								</Box>
 							))}
@@ -153,6 +182,7 @@ export default function Navbar(props) {
 							aria-haspopup="true"
 							aria-expanded={open ? "true" : undefined}
 							onClick={handleClick}
+							// onMouseEnter={handleClick}
 						>
 							<HiOutlineUserCircle size={24} />
 						</IconButton>
@@ -165,8 +195,39 @@ export default function Navbar(props) {
 						</IconButton>
 					</Stack>
 					<Menu
+						anchorOrigin={{
+							vertical: "bottom",
+							horizontal: "center",
+						}}
+						transformOrigin={{
+							vertical: "top",
+							horizontal: "center",
+						}}
 						disableScrollLock={true}
 						id="basic-menu"
+						anchorEl={anchorEl}
+						open={open}
+						onClose={handleClose}
+						MenuListProps={{
+							"aria-labelledby": "basic-button",
+						}}
+					>
+						<MenuItem onClick={handleClose}>Profile</MenuItem>
+						<MenuItem onClick={handleClose}>My account</MenuItem>
+						<MenuItem onClick={handleClose}>Logout</MenuItem>
+					</Menu>
+
+					<Menu
+						anchorOrigin={{
+							vertical: "bottom",
+							horizontal: "center",
+						}}
+						transformOrigin={{
+							vertical: "top",
+							horizontal: "center",
+						}}
+						disableScrollLock={true}
+						id="basic-menu1"
 						anchorEl={anchorEl}
 						open={open}
 						onClose={handleClose}
