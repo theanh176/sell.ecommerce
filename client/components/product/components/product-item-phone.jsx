@@ -42,7 +42,10 @@ export default function ProductItemPhone(props) {
 	return (
 		<Fragment>
 			<Card
-				onClick={() => router.push(`/phone/${pathName}`)}
+				onClick={(e) => {
+					e.stopPropagation();
+					router.push(`/phone/${pathName}`);
+				}}
 				// onClick={() => console.log(pathName)}
 				sx={{
 					maxWidth: 300,
@@ -102,7 +105,7 @@ export default function ProductItemPhone(props) {
 						image="/iphone-3.png"
 						alt="green iguana"
 					/>
-					<CardContent>
+					<CardContent cla>
 						<Typography
 							gutterBottom
 							variant="h6"
